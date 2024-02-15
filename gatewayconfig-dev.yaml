@@ -39,4 +39,8 @@ rguest:
                     validation: false
 userService:
     base:
-        uri: https://aks-core-devint.hospitalityrevolution.com/user-service                    
+        uri: https://aks-core-devint.hospitalityrevolution.com/user-service
+        
+spring:
+    application:
+        name: gatewayconfig
