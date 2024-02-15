@@ -44,3 +44,9 @@ userService:
 spring:
     application:
         name: gatewayconfig
+    dao:
+        exceptiontranslation:
+            enabled: false
+    main:
+        allow-bean-definition-overriding: true
+        allow-circular-references: true    
