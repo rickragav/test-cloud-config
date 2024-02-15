@@ -45,8 +45,6 @@ service:
 spring:
     application:
         name: gatewayconfig
-    config:
-        import: configserver:http://localhost:9001/pay-onboarding-controller
     dao:
         exceptiontranslation:
             enabled: false
