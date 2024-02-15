@@ -1,3 +1,7 @@
-spring
- cloud
-  test: rakesh
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/rickragav/test-cloud-config
+          default-label: master
