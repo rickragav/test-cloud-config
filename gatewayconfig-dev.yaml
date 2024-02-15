@@ -6,3 +6,21 @@ authServiceUri: https://aks-core-devint.hospitalityrevolution.com/auth-service
 cors:
     allow:
         origin: http://localhost:3000
+logging:
+    level:
+        org:
+            apache:
+                cxf: info
+metric:
+    logger:
+        delay: 86400000
+mongodb:
+    databaseName: dev_int_paymentgateway
+    hostname: rguest-pay-dev-01.avg6p.azure.mongodb.net
+    isAtlasInstance: true
+    mainCollectionName: paymentgateway
+    password: kz2F6mlbwrN48T7
+    port: 27017
+    requireAuth: true
+    requireSsl: true
+    username: sanchezm        
