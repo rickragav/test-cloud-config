@@ -35,7 +35,7 @@ mongodb:
         mainCollectionName: paymentgatewayCardPresent
         masterConfigTemplate: masterConfigTemplate
         posTerminals: posTerminalConfig
-    databaseName: {cipher}AQBTtALYiqEiSqvMf8v4gZHvtFecnFAhOojh+Nlsn8O10JZ3kGcJfTocAMlSB3RvyrZ/VJnoDy4zyX66WHLQnzMIe9z5D7DU+PDt1uEtQ1VmsKlzTiYaeCnjwawUpWTkpHAqrhkGg/M8B/E5FEgH8fG+NgLIMhyM8lb3EVHcX3INS5IWcIzU5af8612ZjGrlmvo8Xnw1CpwAs4G0awipVEtPdqm/El6dY6jij6Xvv8yYMnjaFAtJIlfE29pPdJX0EzfO7wVdche3u1OF3mcOyl1B41PtUyHZ0tcFMPWSRi+TBSk6Lo8o4uX9uABXQU100YxGf17et7KhpsMDC8cCPl1yNyXoRWLTLieN6fUWoCO7PhOMdg3QdxHun0XNE1IIxfQu+3rDM+Zo9m+697u7oErJ
+    databaseName: test
     hostname: rguest-pay-dev-01.avg6p.azure.mongodb.net
     isAtlasInstance: true
     mainCollectionName: paymentgateway
