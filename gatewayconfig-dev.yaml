@@ -1,53 +1,63 @@
-PAY_LOG_LEVEL: TRACE
-auth:
-    uri:
-        whitelist: /**/gatewayconfig/provision/*/get
-authServiceUri: https://aks-core-devint.hospitalityrevolution.com/auth-service
-cors:
-    allow:
-        origin: http://localhost:3000
-logging:
-    level:
-        org:
-            apache:
-                cxf: info
-metric:
-    logger:
-        delay: 86400000
-mongodb:
-    databaseName: dev_int_paymentgatewaynew
-    hostname: rguest-pay-dev-01.avg6p.azure.mongodb.net
-    isAtlasInstance: true
-    mainCollectionName: paymentgateway
-    password: kz2F6mlbwrN48T7
-    port: 27017
-    requireAuth: true
-    requireSsl: true
-    username: sanchezm
-    
-payKeyStoreLocation:
-paymentGatewayconfigService:
-    base:
-        uri: http://localhost:8080/pay-gateway-config-service
-rguest:
-    auth:
-        oidc:
-            jwkSetUrl: http://localhost:5000/.well-known/openid-configuration/jwks
-    core:
-        enable:
-            javax:
-                bean:
-                    validation: false
-userService:
-    base:
-        uri: https://aks-core-devint.hospitalityrevolution.com/user-service
-        
 spring:
-    application:
-        name: gatewayconfig
-    dao:
-        exceptiontranslation:
-            enabled: false
-    main:
-        allow-bean-definition-overriding: true
-        allow-circular-references: true    
+  main:
+    allow-circular-references: 'true'
+    allow-bean-definition-overriding: 'true'
+  dao:
+    exceptiontranslation:
+      enabled: 'false'
+mongodb:
+  requireSsl: 'true'
+  password: kz2F6mlbwrN48T7
+  hostname: rguest-pay-dev-01.avg6p.azure.mongodb.net
+  cardPresent:
+    posTerminals: posTerminalConfig
+    masterConfigTemplate: masterConfigTemplate
+    mainCollectionName: paymentgatewayCardPresent
+  port: '27017'
+  mainCollectionName: paymentgateway
+  isAtlasInstance: 'true'
+  requireAuth: 'true'
+  username: sanchezm
+  databaseName: dev_int_paymentgateway
+userServiceUri: https://aks-core-devint.hospitalityrevolution.com/user-service
+emailHeader: Gateway Onboarding Info
+userService:
+  base:
+    uri: https://aks-core-devint.hospitalityrevolution.com/user-service
+emailSubject: Onboarded Client Details
+emailSenderAddress: noreply@hospitalityrevolution.com
+auth:
+  uri:
+    whitelist: /**/gatewayconfig/provision/*/get
+emailSenderName: Agilysys Pay
+ios:
+  connectionType: network
+payKeyStoreLocation:
+service:
+  runtimeFriendlyName: gatewayConfigServiceRuntimeUser
+communicationServiceUri: https://aks-core-devint.hospitalityrevolution.com/communication-service
+logging:
+  level:
+    org:
+      apache:
+        cxf: info
+authServiceUri: https://aks-core-devint.hospitalityrevolution.com/auth-service
+metric:
+  logger:
+    delay: '86400000'
+rguest:
+  core:
+    enable:
+      javax:
+        bean:
+          validation: 'false'
+server:
+  servlet:
+    context-path: /pay-gateway-config-service
+PAY_LOG_LEVEL: TRACE
+cors:
+  allow:
+    origin: http://localhost:3000
+paymentGatewayconfigService:
+  base:
+    uri: http://localhost:9500/pay-gateway-config-service
