@@ -24,7 +24,7 @@ emailHeader: Gateway Onboarding Info
 userService:
   base:
     uri: https://aks-core-devint.hospitalityrevolution.com/user-service
-emailSubject: Onboarded Client Details
+emailSubject: Onboarded Client Details updated 1
 emailSenderAddress: noreply@hospitalityrevolution.com
 auth:
   uri:
