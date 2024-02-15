@@ -15,7 +15,7 @@ metric:
     logger:
         delay: 86400000
 mongodb:
-    databaseName: dev_int_paymentgateway
+    databaseName: dev_int_paymentgatewaynew
     hostname: rguest-pay-dev-01.avg6p.azure.mongodb.net
     isAtlasInstance: true
     mainCollectionName: paymentgateway
