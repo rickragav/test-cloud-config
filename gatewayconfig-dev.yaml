@@ -49,6 +49,4 @@ spring:
             enabled: false
     main:
         allow-bean-definition-overriding: true
-        allow-circular-references: true
-    hrhhhrr:
-        active: 647474jutritit    
+        allow-circular-references: true    
