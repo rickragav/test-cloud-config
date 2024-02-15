@@ -1,27 +1,11 @@
 PAY_LOG_LEVEL: TRACE
 auth:
     uri:
-        whitelist: /api/v1/login/**
-authServiceUri: https://aks-core-uat.hospitalityrevolution.com/auth-service
-authorizationServiceUri: https://aks-core-uat.hospitalityrevolution.com/authorization-service
-configServiceUri: https://aks-pay-uat.hospitalityrevolution.com/pay-gateway-config-service
+        whitelist: /**/gatewayconfig/provision/*/get
+authServiceUri: https://aks-core-devint.hospitalityrevolution.com/auth-service
 cors:
     allow:
-        origin: http://localhost:4200
-currency:
-    code: AFN,ALL,DZD,USD,EUR,AOA,XCD,ARS,AMD,AWG,AUD,AZN,BSD,BHD,BDT,BBD,BYN,BZD,XOF,BMD,BTN,INR,BOB,BOV,BAM,BWP,NOK,BRL,BND,BGN,BIF,CVE,KHR,XAF,CAD,KYD,CLF,CLP,CNY,COP,COU,KMF,CDF,NZD,CRC,CUC,CUP,ANG,CZK,DKK,DJF,DOP,EGP,SVC,ERN,ETB,FKP,FJD,XPF,GMD,GEL,GHS,GIP,GTQ,GBP,GNF,GYD,HTG,HNL,HKD,HUF,ISK,IDR,XDR,IRR,IQD,ILS,JMD,JPY,JOD,KZT,KES,KPW,KRW,KWD,KGS,LAK,LBP,LSL,ZAR,LRD,LYD,CHF,MOP,MGA,MWK,MYR,MVR,MRU,MUR,XUA,MXN,MXV,MDL,MNT,MAD,MZN,MMK,NAD,NPR,NIO,NGN,OMR,PKR,PAB,PGK,PYG,PEN,PHP,PLN,QAR,MKD,RON,RUB,RWF,SHP,WST,STN,SAR,RSD,SCR,SLE,SGD,XSU,SBD,SOS,SSP,LKR,SDG,SRD,SZL,SEK,CHE,CHW,SYP,TWD,TJS,TZS,THB,TOP,TTD,TND,TRY,TMT,UGX,UAH,AED,USN,UYI,UYU,UZS,VUV,VEF,VED,VND,YER,ZMW,ZWL
-gateway:
-    id: freedompay.storeid,datacap.mid,kicc.siteid,datacap.merchantid,adyen.merchantid,vantiv.accountid,vantiv.merchantcode,threec.requesterstationid,elavon.terminalid,eigen.terminalid,celopay.client,stripe.secretkey,cybersource.merchantid,windcave.apikey,shift4.accountnumber
-gatewayList:
-    applePay: Freedompay,Shift4,Adyen,Vantiv,Windcave,Cybersource,Stripe
-    cardPresent: Freedompay,Shift4,Elavon,Eigen,Adyen,Vantiv,ThreeC,ThreeCHPP,Stripe,Cybersource,Kicc
-    giftCard: Carddog,Aces,SVS,Givex,Vantiv,Shift4,Egiftify,IGT,Koin
-    googlePay: Freedompay,Freedompayhpc,Stripe,Shift4,Adyen,Vantiv,Windcave,Cybersource
-    iframe: Freedompay,FreedompayHPP,Shift4,Elavon,Eigen,Adyen,Vantiv,VantivHPP,ThreeC,ThreeCHPP,Celopay,Stripe,Cybersource,CybersourceHPP,WindcaveHPP,Kicc
-    pip: Freedompay,Shift4,Elavon,Eigen,Adyen,Vantiv,ThreeC,Celopay,Stripe,Cybersource,Kicc
-giftCard:
-    gateway:
-        id: givex.userid,carddog.terminalid,egiftify.terminalId,vantiv.storecardid,aces.sourceSiteId,test1.terminalId,svs.store.number,igt.terminalId,koin.apiKey,shift4.accessToken
+        origin: http://localhost:3000
 logging:
     level:
         org:
@@ -31,11 +15,7 @@ metric:
     logger:
         delay: 86400000
 mongodb:
-    cardPresent:
-        mainCollectionName: paymentgatewayCardPresent
-        masterConfigTemplate: masterConfigTemplate
-        posTerminals: posTerminalConfig
-    databaseName: '{cipher}57e2c4833f84f6f2f743e5f5bb8ba39ac79ebd0e900627557dbf9eb775ad7c82e1df538d225265d3de8009d0d1a0ea83'
+    databaseName: dev_int_paymentgateway
     hostname: rguest-pay-dev-01.avg6p.azure.mongodb.net
     isAtlasInstance: true
     mainCollectionName: paymentgateway
@@ -45,7 +25,13 @@ mongodb:
     requireSsl: true
     username: sanchezm
 payKeyStoreLocation: ''
+paymentGatewayconfigService:
+    base:
+        uri: http://localhost:8080/pay-gateway-config-service
 rguest:
+    auth:
+        oidc:
+            jwkSetUrl: http://localhost:5000/.well-known/openid-configuration/jwks
     core:
         enable:
             javax:
@@ -53,23 +39,22 @@ rguest:
                     validation: false
 server:
     servlet:
-        context-path: /pay-onboarding-controller
+        context-path: /pay-gateway-config-service
 service:
-    runtimeFriendlyName: payOnboardingControllerServiceRuntimeUser
+    runtimeFriendlyName: gatewayConfigServiceRuntimeUser
 spring:
-    cloud:
-        config:
-            server:
-                git:
-                    default-label: master
-                    uri: https://github.com/rickragav/test-cloud-config
+    application:
+        name: gatewayconfig
+    config:
+        import: configserver:http://localhost:9001/pay-onboarding-controller
     dao:
         exceptiontranslation:
             enabled: false
     main:
         allow-bean-definition-overriding: true
         allow-circular-references: true
+    profiles:
+        active: dev
 userService:
     base:
-        uri: https://aks-core-uat.hospitalityrevolution.com/user-service
-userServiceUri: https://aks-core-uat.hospitalityrevolution.com/user-service
+        uri: https://aks-core-devint.hospitalityrevolution.com/user-service
