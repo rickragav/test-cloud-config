@@ -1,0 +1,75 @@
+PAY_LOG_LEVEL: TRACE
+auth:
+    uri:
+        whitelist: /api/v1/login/**
+authServiceUri: https://aks-core-uat.hospitalityrevolution.com/auth-service
+authorizationServiceUri: https://aks-core-uat.hospitalityrevolution.com/authorization-service
+configServiceUri: https://aks-pay-uat.hospitalityrevolution.com/pay-gateway-config-service
+cors:
+    allow:
+        origin: http://localhost:4200
+currency:
+    code: AFN,ALL,DZD,USD,EUR,AOA,XCD,ARS,AMD,AWG,AUD,AZN,BSD,BHD,BDT,BBD,BYN,BZD,XOF,BMD,BTN,INR,BOB,BOV,BAM,BWP,NOK,BRL,BND,BGN,BIF,CVE,KHR,XAF,CAD,KYD,CLF,CLP,CNY,COP,COU,KMF,CDF,NZD,CRC,CUC,CUP,ANG,CZK,DKK,DJF,DOP,EGP,SVC,ERN,ETB,FKP,FJD,XPF,GMD,GEL,GHS,GIP,GTQ,GBP,GNF,GYD,HTG,HNL,HKD,HUF,ISK,IDR,XDR,IRR,IQD,ILS,JMD,JPY,JOD,KZT,KES,KPW,KRW,KWD,KGS,LAK,LBP,LSL,ZAR,LRD,LYD,CHF,MOP,MGA,MWK,MYR,MVR,MRU,MUR,XUA,MXN,MXV,MDL,MNT,MAD,MZN,MMK,NAD,NPR,NIO,NGN,OMR,PKR,PAB,PGK,PYG,PEN,PHP,PLN,QAR,MKD,RON,RUB,RWF,SHP,WST,STN,SAR,RSD,SCR,SLE,SGD,XSU,SBD,SOS,SSP,LKR,SDG,SRD,SZL,SEK,CHE,CHW,SYP,TWD,TJS,TZS,THB,TOP,TTD,TND,TRY,TMT,UGX,UAH,AED,USN,UYI,UYU,UZS,VUV,VEF,VED,VND,YER,ZMW,ZWL
+gateway:
+    id: freedompay.storeid,datacap.mid,kicc.siteid,datacap.merchantid,adyen.merchantid,vantiv.accountid,vantiv.merchantcode,threec.requesterstationid,elavon.terminalid,eigen.terminalid,celopay.client,stripe.secretkey,cybersource.merchantid,windcave.apikey,shift4.accountnumber
+gatewayList:
+    applePay: Freedompay,Shift4,Adyen,Vantiv,Windcave,Cybersource,Stripe
+    cardPresent: Freedompay,Shift4,Elavon,Eigen,Adyen,Vantiv,ThreeC,ThreeCHPP,Stripe,Cybersource,Kicc
+    giftCard: Carddog,Aces,SVS,Givex,Vantiv,Shift4,Egiftify,IGT,Koin
+    googlePay: Freedompay,Freedompayhpc,Stripe,Shift4,Adyen,Vantiv,Windcave,Cybersource
+    iframe: Freedompay,FreedompayHPP,Shift4,Elavon,Eigen,Adyen,Vantiv,VantivHPP,ThreeC,ThreeCHPP,Celopay,Stripe,Cybersource,CybersourceHPP,WindcaveHPP,Kicc
+    pip: Freedompay,Shift4,Elavon,Eigen,Adyen,Vantiv,ThreeC,Celopay,Stripe,Cybersource,Kicc
+giftCard:
+    gateway:
+        id: givex.userid,carddog.terminalid,egiftify.terminalId,vantiv.storecardid,aces.sourceSiteId,test1.terminalId,svs.store.number,igt.terminalId,koin.apiKey,shift4.accessToken
+logging:
+    level:
+        org:
+            apache:
+                cxf: info
+metric:
+    logger:
+        delay: 86400000
+mongodb:
+    cardPresent:
+        mainCollectionName: paymentgatewayCardPresent
+        masterConfigTemplate: masterConfigTemplate
+        posTerminals: posTerminalConfig
+    databaseName: dev_int_paymentgateway
+    hostname: rguest-pay-dev-01.avg6p.azure.mongodb.net
+    isAtlasInstance: true
+    mainCollectionName: paymentgateway
+    password: kz2F6mlbwrN48T7
+    port: 27017
+    requireAuth: true
+    requireSsl: true
+    username: sanchezm
+payKeyStoreLocation: ''
+rguest:
+    core:
+        enable:
+            javax:
+                bean:
+                    validation: false
+server:
+    servlet:
+        context-path: /pay-onboarding-controller
+service:
+    runtimeFriendlyName: payOnboardingControllerServiceRuntimeUser
+spring:
+    cloud:
+        config:
+            server:
+                git:
+                    default-label: master
+                    uri: https://github.com/rickragav/test-cloud-config
+    dao:
+        exceptiontranslation:
+            enabled: false
+    main:
+        allow-bean-definition-overriding: true
+        allow-circular-references: true
+userService:
+    base:
+        uri: https://aks-core-uat.hospitalityrevolution.com/user-service
+userServiceUri: https://aks-core-uat.hospitalityrevolution.com/user-service
