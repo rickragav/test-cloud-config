@@ -49,4 +49,6 @@ spring:
             enabled: false
     main:
         allow-bean-definition-overriding: true
-        allow-circular-references: true    
+        allow-circular-references: true
+    profiles:
+        active: dev    
