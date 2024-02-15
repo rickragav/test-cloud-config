@@ -35,7 +35,7 @@ mongodb:
         mainCollectionName: paymentgatewayCardPresent
         masterConfigTemplate: masterConfigTemplate
         posTerminals: posTerminalConfig
-    databaseName: c6462015030a9a5e2cd286ef2cc5935534f5004090443529c9752805a1187bcf
+    databaseName: {cipher}c6462015030a9a5e2cd286ef2cc5935534f5004090443529c9752805a1187bcf
     hostname: rguest-pay-dev-01.avg6p.azure.mongodb.net
     isAtlasInstance: true
     mainCollectionName: paymentgateway
