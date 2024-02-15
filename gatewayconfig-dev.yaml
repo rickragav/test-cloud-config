@@ -25,6 +25,7 @@ mongodb:
     requireSsl: true
     username: sanchezm
     
+payKeyStoreLocation:
 paymentGatewayconfigService:
     base:
         uri: http://localhost:8080/pay-gateway-config-service
