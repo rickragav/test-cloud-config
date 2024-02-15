@@ -28,3 +28,12 @@ mongodb:
 paymentGatewayconfigService:
     base:
         uri: http://localhost:8080/pay-gateway-config-service
+rguest:
+    auth:
+        oidc:
+            jwkSetUrl: http://localhost:5000/.well-known/openid-configuration/jwks
+    core:
+        enable:
+            javax:
+                bean:
+                    validation: false        
